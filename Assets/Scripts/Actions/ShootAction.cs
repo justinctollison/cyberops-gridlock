@@ -85,7 +85,7 @@ public class ShootAction : BaseAction
             shootingUnit = _unit
         });
         
-        _targetUnit.Damage();
+        _targetUnit.Damage(40);
     }
 
     public Vector3 GetTargetPosition()

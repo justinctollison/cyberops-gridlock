@@ -34,4 +34,9 @@ public class UnitSelectedVisual : MonoBehaviour
             _meshRenderer.enabled = false;
         }
     }
+
+    private void OnDestroy()
+    {
+        UnitActionSystem.Instance.OnSelectedUnitChanged -= UnitActionSystem_OnSelectedUnitChange;
+    }
 }

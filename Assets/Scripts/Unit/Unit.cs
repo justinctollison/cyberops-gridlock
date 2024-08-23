@@ -15,6 +15,7 @@ public class Unit : MonoBehaviour
     private SpinAction _unitSpinAction;
     private BaseAction[] _baseActionArray;
 
+    private HealthSystem _healthSystem;
     private GridPosition _gridPosition;
 
     [SerializeField] private int _actionPoints = ACTION_POINTS_MAX;
@@ -24,6 +25,7 @@ public class Unit : MonoBehaviour
         _unitMoveAction = GetComponent<MoveAction>();
         _unitSpinAction = GetComponent<SpinAction>();
         _baseActionArray = GetComponents<BaseAction>();
+        _healthSystem = GetComponent<HealthSystem>();
     }
 
     private void Start()
@@ -32,6 +34,7 @@ public class Unit : MonoBehaviour
         LevelGrid.Instance.AddUnitAtGridPosition(_gridPosition, this);
 
         TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
+        _healthSystem.OnDead += HealthSystem_OnDead;
     }
 
     private void Update()
@@ -128,8 +131,17 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public void Damage()
+    public void HealthSystem_OnDead(object sender, EventArgs e)
     {
+        LevelGrid.Instance.RemoveUnitAtGridPosition(_gridPosition, this);
+
+        Destroy(gameObject);
+    }
+
+    public void Damage(int damageAmount)
+    {
+        _healthSystem.Damage(damageAmount);
+
         Debug.Log($"{gameObject.name} at {transform.position} damaged!");
     }
 }
