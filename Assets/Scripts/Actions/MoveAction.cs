@@ -28,11 +28,11 @@ public class MoveAction : BaseAction
 
     public override void TakeAction(GridPosition position, Action onActionComplete)
     {
-        ActionStart(onActionComplete);
-
         _targetPosition = LevelGrid.Instance.GetWorldPosition(position);
 
         OnStartMoving?.Invoke(this, EventArgs.Empty);
+
+        ActionStart(onActionComplete);
     }
 
     public void Move()
@@ -66,7 +66,7 @@ public class MoveAction : BaseAction
     {
         List<GridPosition> validGridPositionList = new List<GridPosition>();
 
-        GridPosition unitGridPosition = _unit.GetUnitGridPosition();
+        GridPosition unitGridPosition = _unit.GetGridPosition();
 
         for (int x = -_maxMoveDistance; x <= _maxMoveDistance; x++)
         {

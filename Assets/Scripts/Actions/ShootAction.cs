@@ -93,6 +93,11 @@ public class ShootAction : BaseAction
         return _targetUnit.transform.position;
     }
 
+    public Unit GetTargetUnit()
+    {
+        return _targetUnit;
+    }
+
     public override string GetActionName()
     {
         return "Shoot";
@@ -107,7 +112,7 @@ public class ShootAction : BaseAction
     {
         List<GridPosition> validGridPositionList = new List<GridPosition>();
 
-        GridPosition unitGridPosition = _unit.GetUnitGridPosition();
+        GridPosition unitGridPosition = _unit.GetGridPosition();
 
         for (int x = -_maxShootDistance; x <= _maxShootDistance; x++)
         {
@@ -150,8 +155,6 @@ public class ShootAction : BaseAction
 
     public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
     {
-        ActionStart(onActionComplete);
-
         _targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(gridPosition);
 
         _state = State.Aiming;
@@ -159,5 +162,12 @@ public class ShootAction : BaseAction
         _stateTimer = aimingStateTime;
 
         _canShootBullet = true;
+
+        ActionStart(onActionComplete);
+    }
+
+    public int GetMaxShootDistance()
+    {
+        return _maxShootDistance;
     }
 }

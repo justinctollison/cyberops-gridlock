@@ -8,6 +8,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4831633421490625354, guid: 938126c44a0cace4cb1ae6c92564d2ba,
+        type: 3}
+      propertyPath: _ragDollPrefab
+      value: 
+      objectReference: {fileID: 6100415443830388383, guid: fb0c7cc1b842ddb45a0e15f11f917fb0,
+        type: 3}
     - target: {fileID: 1546664839834154849, guid: 938126c44a0cace4cb1ae6c92564d2ba,
         type: 3}
       propertyPath: m_IsActive
@@ -142,7 +148,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 82a7ccffd2fed3e47ae444f4d5b0e027, type: 2}
+      objectReference: {fileID: 2100000, guid: 880f2e8ae8117924d96d9b5e1d9bb8a9, type: 2}
     - target: {fileID: 8992896094048843354, guid: 938126c44a0cace4cb1ae6c92564d2ba,
         type: 3}
       propertyPath: isEnemy
