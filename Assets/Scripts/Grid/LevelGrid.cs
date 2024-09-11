@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class LevelGrid : MonoBehaviour
 {
-    [SerializeField] private Transform _gridDebugObjectPrefab;
-    private GridSystem _gridSystem;
+    public static LevelGrid Instance { get; private set; }
 
     public event EventHandler OnAnyUnitMovedGridPosition;
 
-    public static LevelGrid Instance { get; private set; }
+    [SerializeField] private Transform _gridDebugObjectPrefab;
+    private GridSystem _gridSystem;
 
     private void Awake()
     {
