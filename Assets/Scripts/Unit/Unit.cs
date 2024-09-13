@@ -12,9 +12,9 @@ public class Unit : MonoBehaviour
 
     [SerializeField] private bool _isEnemy;
 
-    private Animator _animator;
     private MoveAction _unitMoveAction;
     private SpinAction _unitSpinAction;
+    private ShootAction _unitShootAction;
     private BaseAction[] _baseActionArray;
 
     private HealthSystem _healthSystem;
@@ -26,6 +26,8 @@ public class Unit : MonoBehaviour
     {
         _unitMoveAction = GetComponent<MoveAction>();
         _unitSpinAction = GetComponent<SpinAction>();
+        _unitShootAction = GetComponent<ShootAction>();
+
         _baseActionArray = GetComponents<BaseAction>();
         _healthSystem = GetComponent<HealthSystem>();
     }
@@ -70,6 +72,11 @@ public class Unit : MonoBehaviour
         return _unitSpinAction;
     }
 
+    public ShootAction GetShootAction()
+    {
+        return _unitShootAction;
+    }
+
     public GridPosition GetGridPosition()
     {
         return _gridPosition;
@@ -93,6 +100,11 @@ public class Unit : MonoBehaviour
     public bool GetIsEnemy()
     {
         return _isEnemy;
+    }
+
+    public float GetHealthNormalized()
+    {
+        return _healthSystem.GetHealthNormalized();
     }
 
     public bool TrySpendActionPointsToTakeAction(BaseAction baseAction)
@@ -123,6 +135,8 @@ public class Unit : MonoBehaviour
     private void SpendActionPoints(int amount)
     {
         _actionPoints -= amount;
+
+        Debug.Log($"Action Points are being spent, removing AP: {_actionPoints} by Cost: {amount}");
 
         OnAnyActionPointsChanged?.Invoke(this, EventArgs.Empty);
     }
