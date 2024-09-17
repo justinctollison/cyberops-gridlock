@@ -4,10 +4,10 @@ public class GridObject
 {
     private List<Unit> _unitList;
 
-    public GridSystem gridSystem;
+    public GridSystem<GridObject> gridSystem;
     public GridPosition gridPosition;
 
-    public GridObject(GridSystem gridSystem, GridPosition gridPosition)
+    public GridObject(GridSystem<GridObject> gridSystem, GridPosition gridPosition)
     {
         this.gridSystem = gridSystem;
         this.gridPosition = gridPosition;
