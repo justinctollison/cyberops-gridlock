@@ -26,7 +26,8 @@ public class LevelGrid : MonoBehaviour
 
         _gridSystem = new GridSystem<GridObject>(10, 10, 2f,
                 (GridSystem<GridObject> g, GridPosition gridPosition) => new GridObject(g, gridPosition));
-        DebugObjectSpawn();
+
+        //DebugObjectSpawn();
     }
 
     private void DebugObjectSpawn()

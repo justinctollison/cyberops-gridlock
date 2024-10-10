@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 7769796473333490725}
   - component: {fileID: 2949190176766577936}
   m_Layer: 0
-  m_Name: DebugObject
+  m_Name: GridDebugObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
