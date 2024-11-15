@@ -28,9 +28,16 @@ public class Pathfinding : MonoBehaviour
             Debug.LogError($"There's more than one Pathfinding System! {transform} - {Instance}");
             Destroy(gameObject);
         }
+    }
 
-        _gridSystem = new GridSystem<PathNode>(10, 10, 2f,
-                (GridSystem<PathNode> g, GridPosition gridPosition) => new PathNode(gridPosition));
+    public void Setup(int width, int height, int cellSize)
+    {
+        _width = width;
+        _height = height;
+        _cellSize = cellSize;
+
+        _gridSystem = new GridSystem<PathNode>(width, height, cellSize,
+               (GridSystem<PathNode> g, GridPosition gridPosition) => new PathNode(gridPosition));
 
         _gridSystem.CreateDebugObjects(_gridDebugObjectPrefab);
     }

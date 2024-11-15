@@ -78,10 +78,12 @@ public class UnitActionSystem : MonoBehaviour
     {
         if (EventSystem.current.IsPointerOverGameObject()) { return; }
         if (_isBusy) { return; }
+        if (!_selectedAction) { return; }
         if (!_selectedUnit) { return; }
         if (!TurnSystem.Instance.GetIsPlayerTurn()) { return; }
 
         // TODO: Fires at the same time as GetUnit and moves the unit at the same time if you select both a Unit and tile
+        // FIXED: Check for selectedAction first, set it to Null when selecting a new Unit
         if (Input.GetMouseButtonDown(0))
         {
             GridPosition mouseGridposition = LevelGrid.Instance.GetGridPosition(MouseWorld.GetPosition());
@@ -143,7 +145,7 @@ public class UnitActionSystem : MonoBehaviour
 
         _selectedUnit = unit;
 
-        SetSelectedAction(unit.GetAction<MoveAction>());
+        SetSelectedAction(null);
 
         OnSelectedUnitChanged?.Invoke(this, EventArgs.Empty);
     }
