@@ -11,6 +11,7 @@ public class PathNode
     private int _gCost;
     private int _hCost;
     private int _fCost;
+    private bool _isWalkable = true;
 
     public PathNode (GridPosition gridPosition)
     {
@@ -40,6 +41,16 @@ public class PathNode
     public int GetFCost()
     {
         return _fCost;
+    }
+
+    public bool IsWalkable()
+    {
+        return _isWalkable;
+    }
+
+    public void SetIsWalkable(bool walkable)
+    {
+        _isWalkable = walkable;
     }
 
     public void SetGCost(int gCost)

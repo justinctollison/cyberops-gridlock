@@ -20,7 +20,7 @@ public class Testing : MonoBehaviour
                     LevelGrid.Instance.GetWorldPosition(gridPositionList[i]),
                     LevelGrid.Instance.GetWorldPosition(gridPositionList[i + 1]),
                     Color.red,
-                    10f
+                    25f
                 );
             }
         }
